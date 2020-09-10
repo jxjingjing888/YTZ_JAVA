@@ -16,7 +16,8 @@ import java.util.Date;
  * @author zsl
  * @version 2017-09-08
  */
-@Setter @Getter
+@Setter
+@Getter
 public class UserInfo {
 
     private static final long serialVersionUID = 1L;

@@ -19,7 +19,7 @@ public class ThreadUtils {
 
     static {
         int processors = Runtime.getRuntime().availableProcessors();
-        service = Executors.newFixedThreadPool(processors*4);
+        service = Executors.newFixedThreadPool(processors * 4);
     }
 
     /**

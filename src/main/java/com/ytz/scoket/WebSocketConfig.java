@@ -19,17 +19,17 @@ public class WebSocketConfig implements WebSocketConfigurer {
     private DiceSocketHander webSocketHander;
 
     /**
-     *  动物
+     * 动物
+     *
      * @param registry
      */
 /*    @Autowired
     @Qualifier("animalSocketHander")
     private WebSocketHandler animalSocketHander;*/
-
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(webSocketHander, "/echo");
-       // registry.addHandler(animalSocketHander, "/animal");
+        // registry.addHandler(animalSocketHander, "/animal");
 
     }
 }

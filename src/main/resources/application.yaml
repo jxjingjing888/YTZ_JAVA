@@ -1,0 +1,33 @@
+#����
+server:
+  port: 8801
+
+
+
+spring:
+  application:
+    name: ${spring.cloud.config.name:ytz-service}
+  loadbalancer:
+    retry:
+      enabled: false
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.4.164:3306/db_magicbox
+    username: iotadmin
+    password: BQ56M2
+  redis:
+    host: 172.16.4.160
+    port: 6379
+    password: 6P%0pvZ$QL
+
+
+
+#mybatis������
+mybatis:
+  mapper_locations: classpath*:mapper/**/**Mapper.xml
+  type-aliases-package: com.piot.model.bean.*
+  config-location: classpath:META-INF/spring/mybatis-config.xml

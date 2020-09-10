@@ -28,6 +28,6 @@ spring:
 
 #mybatis
 mybatis:
-  mapper_locations: classpath*:mapper/**/**Mapper.xml
-  type-aliases-package: com.ytz.model.bean.*
-  config-location: classpath:META-INF/spring/mybatis-config.xml
+  mapper_locations: classpath*:mapper/**/**Dao.xml
+  type-aliases-package: com.ytz.bean.*
+  config-location: classpath:spring/mybatis-config.xml

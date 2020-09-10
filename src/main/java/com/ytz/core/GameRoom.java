@@ -1,7 +1,7 @@
 package com.ytz.core;
 
 
-import com.ytz.bean.UserInfo;
+import com.ytz.bean.SysUser;
 import com.ytz.enums.ActionEnums;
 import com.ytz.enums.RoomTypeEnum;
 import com.ytz.pojo.*;
@@ -190,24 +190,24 @@ public class GameRoom implements Serializable {
     }
 
     private UserInfos selectUserInfo(String token) {
-        UserInfo u = UserInfoServiceImpl.instant.getUserByToken(token);
+        SysUser u = UserInfoServiceImpl.instant.getUserByToken(token);
         UserInfos userInfo = null;
         if (u != null) {
             userInfo = new UserInfos();
             userInfo.setUserId(u.getId());
-            userInfo.setTokenid(u.getTokenid());
+            userInfo.setTokenid(u.getToken());
             userInfo.setRealName(u.getMobilePhone());
             userInfo.setPhone(MobileUtil.mobileEncrypt(u.getMobilePhone()));
-            userInfo.setMoney(u.getDiamondBalance() == null ? "" : u.getDiamondBalance().intValue() + "");
+            userInfo.setMoney(u.getBalance() == null ? "" : u.getBalance().intValue() + "");
             userInfo.setImg(u.getFaceImg());
         }
         return userInfo;
     }
 
     private void userReady(WebSocketSession session, MessageDTO message) throws IOException, InterruptedException {
-        UserInfo u = UserInfoServiceImpl.instant.getUserByToken(message.getTokenId());
+        SysUser u = UserInfoServiceImpl.instant.getUserByToken(message.getTokenId());
         // 首先判断金额足不足
-        if (u.getDiamondBalance().intValue() < this.roomType.getMoney() || ("0").equals(u.getStatus())) {
+        if (u.getBalance().intValue() < this.roomType.getMoney() || ("0").equals(u.getStatus())) {
             message.setData("余额不足!");
             message.setStatus(true);
             message.setType(ActionEnums.NOT_ENOUGH_BALANCE.getType());
@@ -251,7 +251,7 @@ public class GameRoom implements Serializable {
             reward.setTokenid(game.getPlayer().getTokenId());
             reward.setTypeName(roomType.getVal());// 1为初级场，2为中级场，3为高级场
             reward.setUserId(message.getUserId());
-            UserInfo expense = UserInfoServiceImpl.instant.gameSettlement(reward);
+            SysUser expense = UserInfoServiceImpl.instant.gameSettlement(reward);
 
             if (expense == null) {// 为禁用用户或者余额不足
                 // result.put("code", "500");//禁用
@@ -412,7 +412,7 @@ public class GameRoom implements Serializable {
         reward.setTokenid(tokenId);
         reward.setTypeName(roomType.getVal());// 1为初级场，2为中级场，3为高级场
         reward.setUserId(userId);
-        UserInfo expense = UserInfoServiceImpl.instant.gameSettlement(reward);
+        SysUser expense = UserInfoServiceImpl.instant.gameSettlement(reward);
         if (expense == null) {// 为禁用用户或者余额不足
             // result.put("code", "500");//禁用
         }

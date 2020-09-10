@@ -1,4 +1,4 @@
-#����
+
 server:
   port: 8801
 
@@ -26,8 +26,8 @@ spring:
 
 
 
-#mybatis������
+#mybatis
 mybatis:
   mapper_locations: classpath*:mapper/**/**Mapper.xml
-  type-aliases-package: com.piot.model.bean.*
+  type-aliases-package: com.ytz.model.bean.*
   config-location: classpath:META-INF/spring/mybatis-config.xml

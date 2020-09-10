@@ -1,6 +1,6 @@
 package com.ytz.service;
 
-import com.ytz.bean.UserInfo;
+import com.ytz.bean.SysUser;
 import com.ytz.pojo.GameReward;
 
 public interface UserInfoService {
@@ -10,7 +10,7 @@ public interface UserInfoService {
      * @param token
      * @return
      */
-    UserInfo getUserByToken(String token);
+    SysUser getUserByToken(String token);
 
 
     /**
@@ -19,7 +19,7 @@ public interface UserInfoService {
      * @param token
      * @return
      */
-    UserInfo gameSettlement(GameReward token);
+    SysUser gameSettlement(GameReward token);
 
 
 }

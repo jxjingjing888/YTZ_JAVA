@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytz.dao.SysUserDao">
+  <resultMap id="BaseResultMap" type="com.ytz.bean.SysUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="postNo" jdbcType="INTEGER" property="postno" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="weibo" jdbcType="VARCHAR" property="weibo" />
+    <result column="face_img" jdbcType="VARCHAR" property="faceImg" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="ip_address" jdbcType="VARCHAR" property="ipAddress" />
+    <result column="status" jdbcType="BIGINT" property="status" />
+    <result column="invite_id" jdbcType="INTEGER" property="inviteId" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="login_date" jdbcType="TIMESTAMP" property="loginDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, token, real_name, user_name, `password`, mobile_phone, sex, address, postNo, 
+    qq, wechat, weibo, face_img, user_type, ip_address, `status`, invite_id, balance, 
+    login_date, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.ytz.bean.SysUser" useGeneratedKeys="true">
+    insert into sys_user (token, real_name, user_name, 
+      `password`, mobile_phone, sex, 
+      address, postNo, qq, 
+      wechat, weibo, face_img, 
+      user_type, ip_address, `status`, 
+      invite_id, balance, login_date, 
+      create_time)
+    values (#{token,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{postno,jdbcType=INTEGER}, #{qq,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR}, #{faceImg,jdbcType=VARCHAR}, 
+      #{userType,jdbcType=VARCHAR}, #{ipAddress,jdbcType=VARCHAR}, #{status,jdbcType=BIGINT}, 
+      #{inviteId,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}, #{loginDate,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.ytz.bean.SysUser" useGeneratedKeys="true">
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="token != null">
+        token,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="postno != null">
+        postNo,
+      </if>
+      <if test="qq != null">
+        qq,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="weibo != null">
+        weibo,
+      </if>
+      <if test="faceImg != null">
+        face_img,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="ipAddress != null">
+        ip_address,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="inviteId != null">
+        invite_id,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="loginDate != null">
+        login_date,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postno != null">
+        #{postno,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null">
+        #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="faceImg != null">
+        #{faceImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null">
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIGINT},
+      </if>
+      <if test="inviteId != null">
+        #{inviteId,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="loginDate != null">
+        #{loginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytz.bean.SysUser">
+    update sys_user
+    <set>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postno != null">
+        postNo = #{postno,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null">
+        weibo = #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="faceImg != null">
+        face_img = #{faceImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null">
+        ip_address = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BIGINT},
+      </if>
+      <if test="inviteId != null">
+        invite_id = #{inviteId,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="loginDate != null">
+        login_date = #{loginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ytz.bean.SysUser">
+    update sys_user
+    set token = #{token,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      postNo = #{postno,jdbcType=INTEGER},
+      qq = #{qq,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      weibo = #{weibo,jdbcType=VARCHAR},
+      face_img = #{faceImg,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR},
+      ip_address = #{ipAddress,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=BIGINT},
+      invite_id = #{inviteId,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=DECIMAL},
+      login_date = #{loginDate,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

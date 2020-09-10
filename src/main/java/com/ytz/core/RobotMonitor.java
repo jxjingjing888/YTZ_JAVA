@@ -1,6 +1,6 @@
 package com.ytz.core;
 
-import com.ytz.bean.UserInfo;
+import com.ytz.bean.SysUser;
 import com.ytz.enums.ActionEnums;
 import com.ytz.pojo.MessageDTO;
 import com.ytz.pojo.UserInfos;
@@ -66,14 +66,14 @@ public class RobotMonitor {
     }
 
     private UserInfos selectUserInfo(String token) {
-        UserInfo u = userInfoService.getUserByToken(token);
+        SysUser u = userInfoService.getUserByToken(token);
         UserInfos userInfo = null;
         if (u != null) {
             userInfo = new UserInfos();
             userInfo.setUserId(u.getId());
-            userInfo.setTokenid(u.getTokenid());
+            userInfo.setTokenid(u.getToken());
             userInfo.setRealName(MobileUtil.mobileEncrypt(u.getMobilePhone()));
-            userInfo.setMoney(u.getDiamondBalance() == null ? "0" : u.getDiamondBalance().intValue() + "");
+            userInfo.setMoney(u.getBalance() == null ? "0" : u.getBalance().intValue() + "");
             userInfo.setPhone(u.getMobilePhone());
             userInfo.setImg(u.getFaceImg());
         }

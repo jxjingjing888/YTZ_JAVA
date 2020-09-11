@@ -23,6 +23,12 @@ spring:
     host: 172.16.4.160
     port: 6379
     password: 6P%0pvZ$QL
+  thymeleaf:
+    cache: false
+    prefix: classpath:/WEB-INF/pages/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
 
 
 

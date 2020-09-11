@@ -116,6 +116,19 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
+
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>WebRoot</directory>
+            </resource>
+            <resource>
+                <directory>logs</directory>
+            </resource>
+        </resources>
+</build>
 
 </project>

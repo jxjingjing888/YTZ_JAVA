@@ -127,7 +127,7 @@ public class RobotMonitor {
                             if (gameRoom.getDealerSession() == null || !gameRoom.getDealerSession().isOpen()) {// 用户没有掉线
                                 continue;
                             }
-                            System.out.println("机器人进房间了");
+                            log.debug("机器人进房间了");
 
                             room.joinRoom(null); // 机器人没有seesion
                             //

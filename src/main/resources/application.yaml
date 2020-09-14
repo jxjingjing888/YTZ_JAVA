@@ -37,3 +37,12 @@ mybatis:
   mapper_locations: classpath*:mapper/**/**Dao.xml
   type-aliases-package: com.ytz.bean.*
   config-location: classpath:spring/mybatis-config.xml
+
+
+logging:
+  file:
+    max-history: 5
+    max-size: 10MB
+  level:
+    com:
+      ytz: debug

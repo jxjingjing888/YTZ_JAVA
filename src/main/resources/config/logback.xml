@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="${scan:-true}" scanPeriod="${scanPeriod:-60 second}"  debug="false">
+    <contextName>monitor-web</contextName>
+    <conversionRule conversionWord="msgno"
+                    converterClass="com.pay1pay.framework.core.log.LogMsgNoConverter"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 [%thread]
+                线程 %logger打印类 %caller{1}打印输出的位置 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread] - %logger{36} %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="debugFile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+            <!--<onMismatch>DENY</onMismatch>-->
+        </filter>
+        <file>${logfile_path}/debug-stdout.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">      <!-- rollover daily -->
+            <fileNamePattern>${logfile_path}/${application.name}-debug-%d{yyyy-MM}.%i.log.gz</fileNamePattern>
+            <maxHistory>6</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">        <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <!-- <pattern> %X{sessionId} %d{yyyy-MM-dd HH:mm:ss.SSS} [%msgno] [%thread]
+                     %-5level %logger{20} -%msg%n</pattern> -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <file>${logfile_path}/stdout.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">      <!-- rollover daily -->
+            <fileNamePattern>${logfile_path}/${application.name}-%d{yyyy-MM-dd}.%i.log.gz
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">        <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <!-- <pattern> %X{sessionId} %d{yyyy-MM-dd HH:mm:ss.SSS} [%msgno] [%thread]
+                %-5level %logger{20} -%msg%n</pattern> -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <appender name="errfile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${logfile_path}/error-stdout.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">      <!-- rollover daily -->
+            <fileNamePattern>${logfile_path}/${application.name}-error-%d{yyyy-MM}.%i.log.gz
+            </fileNamePattern>
+            <maxHistory>6</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">        <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <!-- <pattern> %X{sessionId} %d{yyyy-MM-dd HH:mm:ss.SSS} [%msgno] [%thread]
+                %-5level %logger{20} -%msg%n</pattern> -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 慢sql日志 -->
+    <appender name="slowSql"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${logfile_path}/slow-sql.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">      <!-- rollover daily -->
+            <fileNamePattern>${logfile_path}/${application.name}-slow-sql-%d{yyyy-MM}.%i.log.gz
+            </fileNamePattern>
+            <maxHistory>3</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">        <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <!-- <pattern> %X{sessionId} %d{yyyy-MM-dd HH:mm:ss.SSS} [%msgno] [%thread]
+                %-5level %logger{20} -%msg%n</pattern> -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="warn">
+        <appender-ref ref="file"/>
+        <appender-ref ref="errfile"/>
+        <appender-ref ref="console"/>
+    </root>
+    <logger name="com.iwuyc" level="DEBUG" additivity="false">
+        <appender-ref ref="debugFile"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="debugFile"/>
+        <appender-ref ref="console"/>
+    </logger>
+</configuration>

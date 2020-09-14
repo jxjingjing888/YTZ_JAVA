@@ -16,9 +16,9 @@ spring:
     default-property-inclusion: non_null
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.16.4.164:3306/db_magicbox
-    username: iotadmin
-    password: BQ56M2
+    url: jdbc:mysql://127.0.0.1:3306/ytz
+    username: root
+    password: 123456
   redis:
     host: 172.16.4.160
     port: 6379
@@ -46,3 +46,4 @@ logging:
   level:
     com:
       ytz: debug
+  config: classpath:config/logback.xml

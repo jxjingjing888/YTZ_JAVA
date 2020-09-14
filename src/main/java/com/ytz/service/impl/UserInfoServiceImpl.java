@@ -5,6 +5,7 @@ import com.ytz.dao.SysUserDao;
 import com.ytz.pojo.GameReward;
 import com.ytz.service.UserInfoService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("userInfoService")
 public class UserInfoServiceImpl implements UserInfoService {
@@ -35,6 +36,7 @@ public class UserInfoServiceImpl implements UserInfoService {
      * @param token
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public SysUser gameSettlement(GameReward token) {
         return null;

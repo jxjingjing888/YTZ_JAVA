@@ -10,15 +10,18 @@ import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
 
 @Slf4j
 @Component("diceSocketHander")
-public class DiceSocketHander implements WebSocketHandler {
+public class DiceSocketHander extends TextWebSocketHandler {
     @Autowired
     private RoomHandler roomHandler;
     //private ArrayList<WebSocketSession> allSession = new ArrayList<WebSocketSession>();
+
+
 
     /**
      * 初次链接成功执行

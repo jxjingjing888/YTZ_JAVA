@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 //开启事务管理
 @EnableTransactionManagement
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.ytz"})
 public class YtzApplication {
 
     public static void main(String[] args) {

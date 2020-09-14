@@ -1,7 +1,14 @@
 package com.ytz.enums;
 
+/**
+ * @author Bob
+ */
+
 public enum RoomTypeEnum {
 
+    /**
+     *
+     */
     PRIMARY("primary", 10, "1", 2, "低分"),
     /**
      *

@@ -28,7 +28,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     private WebSocketHandler animalSocketHander;*/
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(webSocketHander, "/echo");
+        registry.addHandler(webSocketHander, "echo").setAllowedOrigins("*");;
         // registry.addHandler(animalSocketHander, "/animal");
 
     }

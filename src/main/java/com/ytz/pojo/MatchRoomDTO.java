@@ -1,7 +1,11 @@
 package com.ytz.pojo;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+
+@Data
 public class MatchRoomDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -18,37 +22,7 @@ public class MatchRoomDTO implements Serializable {
         this.money = money;
     }
 
-    public String getRoomNum() {
-        return roomNum;
-    }
 
-    public void setRoomNum(String roomNum) {
-        this.roomNum = roomNum;
-    }
-
-    public String getRoomTypeName() {
-        return roomTypeName;
-    }
-
-    public void setRoomTypeName(String roomTypeName) {
-        this.roomTypeName = roomTypeName;
-    }
-
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
-
-    public int getMoney() {
-        return money;
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
-    }
 
 
 }

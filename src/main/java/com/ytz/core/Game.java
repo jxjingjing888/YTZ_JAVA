@@ -2,12 +2,14 @@ package com.ytz.core;
 
 
 import com.ytz.pojo.Player;
+import lombok.Data;
 
 import java.util.UUID;
 
 /**
  * @author Bob
  */
+@Data
 public class Game {
     private Player dealer = new Player();
     private Player player = new Player();
@@ -25,29 +27,7 @@ public class Game {
         gameId = null;
     }
 
-    public Player getDealer() {
-        return dealer;
-    }
 
-    public void setDealer(Player dealer) {
-        this.dealer = dealer;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public String getGameId() {
-        return gameId;
-    }
-
-    public void setGameId(String gameId) {
-        this.gameId = gameId;
-    }
 
 
 }

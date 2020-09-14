@@ -2,7 +2,12 @@ package com.ytz.pojo;
 
 
 import com.ytz.util.RuleUtils;
+import lombok.Data;
 
+/**
+ * @author Bob
+ */
+@Data
 public class Player {
     private int[] diceArray = {};// 点数
 
@@ -32,60 +37,5 @@ public class Player {
     }
 
 
-    public int[] getDiceArray() {
-        return diceArray;
-    }
-
-    public void setDiceArray(int[] diceArray) {
-        this.diceArray = diceArray;
-    }
-
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-    public int getDiceNum() {
-        return diceNum;
-    }
-
-    public void setDiceNum(int diceNum) {
-        this.diceNum = diceNum;
-    }
-
-    public boolean isZai() {
-        return zai;
-    }
-
-    public void setZai(boolean zai) {
-        this.zai = zai;
-    }
-
-    public boolean isFei() {
-        return fei;
-    }
-
-    public void setFei(boolean fei) {
-        this.fei = fei;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getTokenId() {
-        return tokenId;
-    }
-
-    public void setTokenId(String tokenId) {
-        this.tokenId = tokenId;
-    }
 
 }

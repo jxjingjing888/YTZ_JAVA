@@ -41,10 +41,8 @@ public class RobotMonitor {
     }
 
     public void init() {
-        BufferedReader br = null;
-        try {
-            InputStreamReader reader = new InputStreamReader(this.getClass().getResourceAsStream("/robotToken.txt"));
-            br = new BufferedReader(reader);
+        try (InputStreamReader reader = new InputStreamReader(this.getClass().getResourceAsStream("/robotToken.txt"));
+             BufferedReader br = new BufferedReader(reader);) {
             String s = null;
             //使用readLine方法，一次读一行
             while ((s = br.readLine()) != null) {
@@ -53,14 +51,6 @@ public class RobotMonitor {
             new RoomMonitor().start();
         } catch (Throwable e) {
             log.error("初始化机器人失败", e);
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
 
     }

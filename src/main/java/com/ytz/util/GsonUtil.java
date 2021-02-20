@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * 用于json字符串跟对象的转换
  *
- * @author 吴宇春
+ * @author
  */
 @Slf4j
 public class GsonUtil {

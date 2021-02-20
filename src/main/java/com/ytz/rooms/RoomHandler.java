@@ -92,6 +92,13 @@ public class RoomHandler {
         }
     }
 
+
+    /**
+     * 这里应该用策略模式 或者 观察者模式会好很多，事件驱动
+     * @param session
+     * @param request
+     * @throws IOException
+     */
     public void receiveMessage(WebSocketSession session, String request) throws IOException {
         try {
             // 信息接收，判断是对房间操作还是对游戏对局操作

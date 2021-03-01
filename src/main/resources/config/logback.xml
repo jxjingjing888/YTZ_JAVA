@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="${scan:-true}" scanPeriod="${scanPeriod:-60 second}"  debug="false">
+<configuration scan="${scan:-true}" scanPeriod="${scanPeriod:-60 second}" debug="false">
     <contextName>monitor-web</contextName>
-    <conversionRule conversionWord="msgno"
-                    converterClass="com.pay1pay.framework.core.log.LogMsgNoConverter"/>
+    <conversionRule conversionWord="msgno" converterClass="com.pay1pay.framework.core.log.LogMsgNoConverter"/>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -112,16 +111,13 @@
     </appender>
 
     <root level="warn">
-        <appender-ref ref="file"/>
-        <appender-ref ref="errfile"/>
+        <!--        <appender-ref ref="file"/>
+                <appender-ref ref="errfile"/>-->
         <appender-ref ref="console"/>
     </root>
-    <logger name="com.iwuyc" level="DEBUG" additivity="false">
-        <appender-ref ref="debugFile"/>
-        <appender-ref ref="console"/>
+    <logger name="com.iwuyc" level="ERROR" additivity="false">
+
     </logger>
     <logger name="org.springframework" level="INFO" additivity="false">
-        <appender-ref ref="debugFile"/>
-        <appender-ref ref="console"/>
     </logger>
 </configuration>
